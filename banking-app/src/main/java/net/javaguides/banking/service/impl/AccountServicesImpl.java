@@ -1,5 +1,6 @@
 package net.javaguides.banking.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import net.javaguides.banking.dto.AccountDto;
 import net.javaguides.banking.entity.Account;
 import net.javaguides.banking.mapper.AccountMapper;
@@ -30,7 +31,7 @@ public class AccountServicesImpl implements AccountService {
     public AccountDto getAccountById(Long id) {
         Account account=accountRepository
                 .findById(id)
-                .orElseThrow(()->new RuntimeException("Account Doesn't exist"));
+                .orElseThrow(()->new EntityNotFoundException("Account Doesn't exist"));
         return AccountMapper.mapToAccountDto(account);
     }
 
@@ -38,7 +39,7 @@ public class AccountServicesImpl implements AccountService {
     public AccountDto deposite(Long id, double amount) {
         Account account=accountRepository
                 .findById(id)
-                .orElseThrow(()-> new RuntimeException("Account  doesn't exist"));
+                .orElseThrow(()-> new EntityNotFoundException("Account  doesn't exist"));
        double total= account.getBalance()+amount;
        account.setBalance(total);
      Account savedAccount=  accountRepository.save(account);

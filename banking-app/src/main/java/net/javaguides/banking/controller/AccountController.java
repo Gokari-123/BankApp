@@ -39,7 +39,7 @@ public class AccountController {
 
     //Withdraw Rest Api
     @PutMapping("/{id}/withdraw")
-    public ResponseEntity<AccountDto>withdraw(@PathVariable long id,
+    public ResponseEntity<AccountDto> withdraw(@PathVariable long id,
                                               @RequestBody Map<String,Double>request){
         Double amount =request.get("amount");
         AccountDto accountDto=accountService.withdraw(id,amount);

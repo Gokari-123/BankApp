@@ -21,4 +21,5 @@ public class Account {
     private String accountHolderName;
     @Column(name="balance")
     private double balance;
+
 }

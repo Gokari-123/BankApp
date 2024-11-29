@@ -1,8 +1,10 @@
 package net.javaguides.banking.service;
 
 import net.javaguides.banking.dto.AccountDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 public interface AccountService {
     AccountDto createAccount(AccountDto accountDto);
